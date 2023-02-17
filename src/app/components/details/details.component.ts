@@ -11,7 +11,7 @@ import { HttpService } from 'src/app/services/http.service';
 })
 export class DetailsComponent implements OnInit, OnDestroy {
   gameRating = 0;
-  gameId: string = "";
+  gameId!: number;
   game!: Game;
   routeSub: Subscription = new Subscription;
   gameSub: Subscription = new Subscription;
@@ -28,7 +28,7 @@ export class DetailsComponent implements OnInit, OnDestroy {
     });
   }
 
-  getGameDetails(id: string): void {
+  getGameDetails(id: number): void {
     this.gameSub = this.httpService
       .getGameDetails(id)
       .subscribe((gameResp: Game) => {
